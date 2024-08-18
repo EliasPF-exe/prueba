@@ -1,0 +1,12 @@
+
+
+
+
+CREATE DATABASE dbase_elprogreso CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
+
+
+Usuario para Base de Datos
+==========================
+CREATE USER elprogreso@localhost IDENTIFIED BY 'NqtZpq4vKl4SxIiNAj0KUaHa';
+GRANT ALL PRIVILEGES ON elprogreso.* TO elprogreso@localhost;
+FLUSH PRIVILEGES;

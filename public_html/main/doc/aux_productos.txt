@@ -1,0 +1,13 @@
+
+
+- Crear la tabla de auxiliar de productos
+CREATE TABLE IF NOT EXISTS aux_producto (
+    uuid INT AUTO_INCREMENT PRIMARY KEY,
+    nombre VARCHAR(50) NOT NULL UNIQUE,
+    descripcion TEXT NOT NULL,
+    id_marca INT UNIQUE,
+    precio DECIMAL(10,2),
+    proveedor_id INT,  
+    creado TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    modificado TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+);

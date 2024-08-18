@@ -1,0 +1,310 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0%;
+    padding: 0;
+    background-color: #333;
+    width: 100%;
+    overflow-x: hidden;
+}
+header {
+    background-color: #121212;
+    padding: 10px;
+    width: 100%;
+}
+header h1{
+    background-color: #121212;
+    color: #fff;
+    padding: 0px;
+    font-size: 3rem;
+    text-align: center;
+}
+
+nav {
+    background-color: #121212;
+    position: relative; /* Asegura que el menú esté en un contexto de posición */
+    z-index: 998; /* Asegura que el menú esté encima de otros elementos */
+}
+
+nav ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+}
+
+nav ul li {
+    position: relative; /* Permite que el submenú se posicione absolutamente dentro de este elemento */
+}
+
+nav ul li a {
+    display: block;
+    color: #fff;
+    text-decoration: none;
+    padding: 15px 20px;
+    text-align: center;
+}
+
+nav ul li a:hover {
+    background-color: #575757;
+}
+
+/* Estilos para el submenú */
+.submenu {
+    color: #fff;
+    display: none;
+    position: absolute;
+    top: 100%; /* Coloca el submenú justo debajo del ítem del menú */
+    left: 0;
+    background-color: #333;
+    padding: 0;
+    list-style: none;
+    min-width: 160px; /* Ancho mínimo para que el submenú tenga un tamaño adecuado */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); /* Sombra para darle un efecto de profundidad */
+    z-index: 1000; /* Asegura que el submenú esté sobre otros elementos */
+}
+
+.submenu li {
+    padding: 10px 20px;
+    white-space: nowrap; /* Evita el ajuste de línea */
+}
+
+.submenu li:hover {
+    background-color: #575757;
+}
+
+/* Mostrar el submenú al pasar el cursor sobre el ítem principal */
+.has-submenu:hover .submenu {
+    display: block;
+}
+
+.register  {
+    text-align: right;
+    margin-right: 20px;
+}
+
+.register:hover{
+    text-decoration: underline;
+}
+
+.register a {
+    color:cyan;
+    border-style: none;
+    text-decoration: none;
+    text-align: right;
+}
+
+
+p.register a {
+    text-decoration: none;
+    color: cyan;
+    margin: 0 10px;
+}
+
+p.register a:hover {
+    text-decoration: underline;
+}
+
+.container {
+    width: 80%;
+    margin: 0 auto;
+    overflow: hidden;
+}
+
+.main-banner h1 {
+    font-size: 40px;
+    margin: 0;
+    color: #ffffff;
+    text-align: center;
+}
+section {
+    margin: 20px 0;
+}
+
+h2 {
+    color: #ffffff;
+    border-bottom: 2px solid #fff;
+    padding-bottom: 10px;
+}
+.product-grid, .category-grid, .brand-grid {
+    display: flex;
+    flex-wrap: wrap;
+}
+.product, .category, .brand {
+    flex: 1 1 calc(25% - 20px);
+    margin: 10px;
+    background: #c0fbff;
+    padding: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    display: inline-block;
+    border-radius: 10px;
+}
+.product img, .category img, .brand img {
+    max-width: 100%;
+    height: auto;
+}
+
+.TodosProductos {
+    overflow-x: auto;
+    padding: 5px;
+    background-color: #333333;
+    text-align: center;
+}
+
+.footer {
+    background-color: #121212;
+    color: #fff;
+    text-align: center;
+    padding: 10px;
+    position: flex;
+    bottom: 0;
+    width: 100%;
+}
+.producto {
+    white-space: nowrap;
+    overflow-x: auto;
+    padding: 5px;
+    background-color: #333333;
+}
+
+.view-details {
+    background-color: #2551a3; 
+    color: #fff; 
+    border: 2px solid #2551a3;
+    border-width: 3px;
+    padding: 10px 20px; 
+    font-size: 16px; 
+    cursor: pointer; 
+    border-radius: 5px; 
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); 
+    transition: all 0.3s ease;
+    padding:7px;
+    float: right;
+}
+
+.view-details:hover {
+    background-color: #2551a3; 
+    border-color: #1c448f; 
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3); 
+    border-width: 3px;
+    padding: 9px;
+}
+
+.view-details:active {
+    background: #3666be; /* Color de fondo al hacer clic */
+    transition: background 0.3s ease;
+    border-color:#1c448f;
+}
+
+
+.btn-cart {
+    width: 50px;
+    height: 40px;
+    background:#359c35; /* Degradé entre verde claro y verde oscuro */
+    border-radius: 25px; /* Bordes redondeados */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); 
+    transition: transform 0.3s ease, background 0.3s ease; /* Transiciones para agrandamiento y cambio de color */
+    float: right;
+    margin-left: 5px;
+    border:2px solid transparent;
+}
+
+.btn-cart img {
+    width: 25px;
+    height: 25px;
+}
+
+.btn-cart:hover {
+    transform: scale(1.1); /* Agrandamiento al pasar el cursor */
+    border-width: 2px;
+    border-color: #1a831a;
+}
+
+.btn-cart:active {
+    background: #6dd16d; /* Color de fondo al hacer clic */
+    transition: background 0.3s ease;
+}
+
+.btn-carrito {
+    width: 60px; /* Tamaño ajustado para que sea visible */
+    height: 60px;
+    background-color:  #359c35; /* Fondo transparente */
+    border: transparent;
+    border-radius: 50%; /* Bordes redondeados */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: transform 0.3s ease, background 0.3s ease; /* Transiciones para agrandamiento y cambio de color */
+    position: fixed; /* Posiciona el botón en la pantalla */
+    top: 20px; /* Alineación vertical desde la parte superior */
+    right: 20px; /* Alineación horizontal desde la parte derecha */
+    z-index: 999; /* Asegura que el botón esté encima de otros elementos */
+    margin-top: 220px;
+    padding: 5px;
+    box-shadow: 0 10px 20px rgba(255, 255, 255, 0.37); /* Sombra suave y ovalada */
+}
+
+.btn-carrito img {
+    width: 95%; /* Ajusta la imagen al tamaño del botón */
+    height: 60%;
+}
+
+.btn-carrito:active {
+    background: #6dd16d; /* Color de fondo al hacer clic */
+    transition: background 0.3s ease;
+}
+
+.btn-carrito:hover {
+    transform: scale(1.1); /* Agrandamiento al pasar el cursor */
+    border-width: 2px;
+    border-color: #1a831a;
+}
+
+
+/* Estilos para la barra lateral */
+.sidebar {
+    height: 100%;
+    width: 0;
+    position: fixed;
+    top: 0;
+    right: 0;
+    background-color: #494949;
+    overflow-x: hidden;
+    transition: 0.5s;
+    padding-top: 60px;
+    color: white;
+    z-index: 1000;
+    box-shadow: -2px 0 5px rgba(0, 0, 0, 0.5); /* Sombra para la barra lateral */
+}
+
+.sidebar h2 {
+    margin-top: 20px;
+    color: #fff;
+}
+
+.sidebar .closebtn {
+    position: absolute;
+    font-size: 36px;
+    color: #cacaca;
+    background-color: #121212;
+    cursor: pointer;
+}
+
+/* Estilo del contenido de la sidebar */
+.sidebar p {
+    margin-left: 20px;
+}
+
+/* Agregar una sombra para que el contenido se vea claramente sobre la página */
+.sidebar.open {
+    width: 250px;
+}
+
+.sidebar.open ~ .main-content {
+    margin-right: 250px;
+}

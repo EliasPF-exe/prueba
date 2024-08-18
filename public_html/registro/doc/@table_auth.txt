@@ -1,0 +1,44 @@
+Base de datos y tabla de usuarios para autenticacion
+----------------------------------------------------
+
+CREATE DATABASE auth_db CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
+
+Usuario para el modulo auth
+===========================
+CREATE USER auth_user@localhost IDENTIFIED BY 'tqFXmc3ZuY56XX4BVdXtVgu2';
+GRANT SELECT ON auth_db.auth TO auth_user@localhost;
+FLUSH PRIVILEGES;
+
+
+Usuario para el modulo usuarios
+===============================
+CREATE USER auth_rwuser@localhost IDENTIFIED BY 'PwAWJB79+uekHGgc5sE2lVud';
+GRANT ALL PRIVILEGES ON auth_db.auth TO auth_rwuser@localhost;
+FLUSH PRIVILEGES;
+
+
+-- Crear la tabla de usuarios
+CREATE TABLE IF NOT EXISTS auth (
+    uuid INT AUTO_INCREMENT PRIMARY KEY,
+    username VARCHAR(50) NOT NULL UNIQUE,
+    password VARCHAR(255) NOT NULL,
+    email VARCHAR(100) UNIQUE,
+    rol ENUM('root','admin','usuario') DEFAULT 'usuario',
+    estado TINYINT DEFAULT 1,
+    creado TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    modificado TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+);
+
+Estado:
+1 - Usuario normal
+2 - Usuario desactivado
+3 - Usuario eliminado
+4 - Usuario cuenta clausurada
+
+
+
+
+-- Opcionalmente, puedes crear un índice en el campo username para búsquedas más rápidas
+
+CREATE INDEX idx_username ON auth (username);
+

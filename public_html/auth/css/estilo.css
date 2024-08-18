@@ -1,0 +1,87 @@
+body{
+    background-color: #333;
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+header {
+    background-color: #121212;
+    padding: 10px;
+}
+
+header h1{
+    color: #fff;
+    padding: 1rem;
+    text-align: center;
+}
+
+nav ul {
+    list-style: none;
+    padding: 0; 
+    text-align: center;
+
+}
+
+nav ul li {
+    display: inline;
+    margin: 0 15px;
+}
+
+nav ul li a {
+    color: #fff;
+    text-decoration: none;
+}
+
+.form-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+form {
+    max-width: 400px;
+    padding: 20px;
+    border: 1px solid #cacaca;
+    border-radius: 3px;
+    background: #121212;
+}
+
+.campoFormulario {
+    margin-bottom: 15px;
+}
+
+label {
+    display: block;
+    margin-bottom: 5px;
+}
+
+input[type="text"],
+input[type="password"],
+input[type="date"],
+
+select {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    box-sizing: border-box;
+    margin-top: 5px;
+}
+
+select {
+    height: 30px;
+}
+
+.botonFormulario {
+    text-align: center;
+}
+
+h1{
+    text-align: center;
+}
+
+input[type="submit"]:hover {
+    background: #6e7883;
+}

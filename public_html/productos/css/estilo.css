@@ -1,0 +1,57 @@
+body {
+    background-color: #333;
+
+}
+
+
+.form-container {
+    display: flex;
+    height: 100vh;
+}
+
+form {
+    max-width: 400px;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background: #f9f9f9;
+}
+
+.campoFormulario {
+    margin-bottom: 15px;
+    justify-content: center;
+    align-items: left;
+}
+
+label {
+    display: block;
+    margin-bottom: 5px;
+    block-size: 10px;
+}
+
+input[type="text"],
+input[type="password"],
+input[type="date"],
+select {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    box-sizing: border-box;
+    margin-top: 5px;
+}
+
+select {
+    height: 30px;
+    block-size: 50px;
+}
+
+.botonFormulario {
+    text-align: center;
+}
+
+
+
+input[type="submit"]:hover {
+    background: #6e7883;
+}

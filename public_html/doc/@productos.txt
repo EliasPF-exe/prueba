@@ -1,0 +1,130 @@
+-- Crear la base de datos
+CREATE DATABASE IF NOT EXISTS tienda_deportiva;
+
+-- Usar la base de datos
+USE tienda_deportiva;
+
+-- Tabla de Proveedores
+CREATE TABLE proveedores (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    nombre VARCHAR(100) NOT NULL,
+    contacto VARCHAR(100),
+    telefono VARCHAR(20),
+    email VARCHAR(100),
+    direccion TEXT,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+);
+
+-- Tabla de Marcas
+CREATE TABLE marcas (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    nombre VARCHAR(50) NOT NULL,
+    descripcion TEXT,
+    pais_origen VARCHAR(50),
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+);
+
+-- Tabla de Categorías
+CREATE TABLE categorias (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    nombre VARCHAR(50) NOT NULL,
+    descripcion TEXT,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+);
+
+-- Tabla de Productos
+CREATE TABLE productos (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    codigo_barras VARCHAR(20) UNIQUE NOT NULL,
+    nombre VARCHAR(100) NOT NULL,
+    descripcion TEXT,
+    id_categoria INT,
+    id_marca INT,
+    modelo VARCHAR(50),
+    tipo_prenda VARCHAR(50),
+    peso DECIMAL(5,2),
+    tamanio ENUM('X', 'Y', 'Z'),
+    precio_venta DECIMAL(10,2) NOT NULL,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+    FOREIGN KEY (id_categoria) REFERENCES categorias(id),
+    FOREIGN KEY (id_marca) REFERENCES marcas(id)
+);
+
+-- Tabla de Variantes de Producto (para manejar tallas y colores)
+CREATE TABLE variantes_producto (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    id_producto INT,
+    talle VARCHAR(10) NOT NULL,
+    color VARCHAR(20) NOT NULL,
+    stock INT NOT NULL DEFAULT 0,
+    sku VARCHAR(50) UNIQUE NOT NULL,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+    FOREIGN KEY (id_producto) REFERENCES productos(id)
+);
+
+-- Tabla de Proveedores de Productos
+CREATE TABLE proveedores_productos (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    id_producto INT,
+    id_proveedor INT,
+    precio_compra DECIMAL(10,2) NOT NULL,
+    tiempo_entrega INT, -- en días
+    cantidad_minima INT,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+    FOREIGN KEY (id_producto) REFERENCES productos(id),
+    FOREIGN KEY (id_proveedor) REFERENCES proveedores(id)
+);
+
+-- Tabla de Clientes
+CREATE TABLE clientes (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    nombre VARCHAR(100) NOT NULL,
+    email VARCHAR(100) UNIQUE NOT NULL,
+    telefono VARCHAR(20),
+    direccion TEXT,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+);
+
+-- Tabla de Pedidos
+CREATE TABLE pedidos (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    id_cliente INT,
+    fecha_pedido DATETIME DEFAULT CURRENT_TIMESTAMP,
+    estado ENUM('pendiente', 'procesando', 'enviado', 'entregado', 'cancelado') DEFAULT 'pendiente',
+    total DECIMAL(10,2) NOT NULL,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+    FOREIGN KEY (id_cliente) REFERENCES clientes(id)
+);
+
+-- Tabla de Detalles de Pedido
+CREATE TABLE detalles_pedido (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    id_pedido INT,
+    id_variante_producto INT,
+    cantidad INT NOT NULL,
+    precio_unitario DECIMAL(10,2) NOT NULL,
+    subtotal DECIMAL(10,2) NOT NULL,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+    FOREIGN KEY (id_pedido) REFERENCES pedidos(id),
+    FOREIGN KEY (id_variante_producto) REFERENCES variantes_producto(id)
+);
+
+-- Tabla de Imágenes de Producto
+CREATE TABLE imagenes_producto (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    id_producto INT,
+    url_imagen VARCHAR(255) NOT NULL,
+    es_principal BOOLEAN DEFAULT FALSE,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+    FOREIGN KEY (id_producto) REFERENCES productos(id)
+);

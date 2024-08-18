@@ -1,0 +1,130 @@
+
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    color: #f0f0f0;
+    background-color: #121212;
+}
+
+.sidebar {
+    width: 250px;
+    height: 100vh;
+    background-color: #1e1e1e;
+    position: fixed;
+    padding: 10px;
+    top:0;
+    left: 0;
+    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.5);
+    transition: transform 0.3s ease;
+    z-index: 1000;
+}
+
+.sidebar.collapsed {
+    transform: translateX(-500px); 
+}
+
+.sidebar h2 {
+    color: #ffffff;
+    margin-top: 0;
+}
+
+.sidebar ul {
+    list-style: none;
+    padding: 0;
+}
+
+.sidebar ul li {
+    margin: 10px 0;
+}
+
+.sidebar ul li a {
+    color: #b0bec5;
+    text-decoration: none;
+    font-size: 18px;
+}
+
+.sidebar ul li a:hover {
+    color: #ffffff;
+}
+
+
+.main-content {
+    margin-left: 260px;
+    padding: 20px;
+    transition: margin-left 0.3s ease;
+}
+
+.sidebar.collapsed ~ .main-content {
+    margin-left: 0px;
+
+}
+
+.sidebar-toggle {
+    position:relative;
+    top: 0px;
+    left: 0px;
+    background-color: #333;
+    color: #fff;
+    border: none;
+    padding: 10px;
+    border-radius: 0px;
+    cursor: pointer;
+    z-index: 1001;
+    transition: transform 0.3s ease;
+    transition: transform 0.3s ease, border-radius 0.3s ease;
+    border-radius: 0;
+}
+
+.sidebar-toggle:hover {
+    background-color: #444;
+}
+
+.sidebar.collapsed .sidebar-toggle {
+    transform: rotate(90deg);
+}
+.rotated {
+    transform: rotate(90deg);
+}
+
+#productChart {
+    max-width: 600px; /* Ancho máximo del gráfico */
+    margin: 20px auto; /* Margen para centrar el gráfico */
+    border: 1px solid #ccc; /* Borde del gráfico */
+    border-radius: 5px; /* Bordes redondeados */
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1); /* Sombra suave */
+}
+
+header {
+    background-color: #1e1e1e;
+    padding: 15px;
+    color: #ffffff;
+    border-bottom: 1px solid #333;
+}
+
+.cards {
+    display: flex;
+    gap: 20px;
+}
+
+.card {
+    background-color: #333;
+    padding: 20px;
+    border-radius: 5px;
+    flex: 1;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+}
+
+.card h3 {
+    margin-top: 0;
+}
+
+.card p {
+    font-size: 24px;
+    margin: 0;
+}
+
+canvas {
+    background-color: #333; 
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+}

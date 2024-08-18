@@ -1,0 +1,23 @@
+.search-container {
+    display: flex;
+    justify-content: center;
+    margin-top: 50px;
+}
+
+.search-container input[type="text"],
+.search-container select {
+    padding: 10px;
+    font-size: 16px;
+    margin-right: 5px;
+}
+
+.search-container button {
+    padding: 10px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+#resultados {
+    margin-top: 20px;
+    text-align: center;
+}
